@@ -7,7 +7,7 @@ from typing import Dict, Callable, Optional
 import aiohttp
 from blspy import AugSchemeMPL, G2Element
 from aiohttp import web
-from chia.protocols.pool_protocol import (
+from flora.protocols.pool_protocol import (
     PoolErrorCode,
     GetFarmerResponse,
     GetPoolInfoResponse,
@@ -18,15 +18,15 @@ from chia.protocols.pool_protocol import (
     POOL_PROTOCOL_VERSION,
     AuthenticationPayload,
 )
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.hash import std_hash
-from chia.consensus.default_constants import DEFAULT_CONSTANTS
-from chia.consensus.constants import ConsensusConstants
-from chia.util.json_util import obj_to_response
-from chia.util.ints import uint8, uint64, uint32
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.config import load_config
+from flora.types.blockchain_format.sized_bytes import bytes32
+from flora.util.byte_types import hexstr_to_bytes
+from flora.util.hash import std_hash
+from flora.consensus.default_constants import DEFAULT_CONSTANTS
+from flora.consensus.constants import ConsensusConstants
+from flora.util.json_util import obj_to_response
+from flora.util.ints import uint8, uint64, uint32
+from flora.util.default_root import DEFAULT_ROOT_PATH
+from flora.util.config import load_config
 
 from .record import FarmerRecord
 from .pool import Pool
