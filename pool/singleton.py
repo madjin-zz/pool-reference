@@ -2,8 +2,8 @@ from typing import List, Optional, Tuple
 import logging
 
 from blspy import G2Element
-from chia.consensus.coinbase import pool_parent_id
-from chia.pools.pool_puzzles import (
+from flora.consensus.coinbase import pool_parent_id
+from flora.pools.pool_puzzles import (
     create_absorb_spend,
     solution_to_extra_data,
     get_most_recent_singleton_coin_from_coin_spend,
@@ -11,16 +11,16 @@ from chia.pools.pool_puzzles import (
     create_full_puzzle,
     get_delayed_puz_info_from_launcher_spend,
 )
-from chia.pools.pool_wallet import PoolSingletonState
-from chia.pools.pool_wallet_info import PoolState
-from chia.rpc.full_node_rpc_client import FullNodeRpcClient
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import Program, SerializedProgram
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_record import CoinRecord
-from chia.types.coin_spend import CoinSpend
-from chia.types.spend_bundle import SpendBundle
-from chia.util.ints import uint32, uint64
+from flora.pools.pool_wallet import PoolSingletonState
+from flora.pools.pool_wallet_info import PoolState
+from flora.rpc.full_node_rpc_client import FullNodeRpcClient
+from flora.types.blockchain_format.coin import Coin
+from flora.types.blockchain_format.program import Program, SerializedProgram
+from flora.types.blockchain_format.sized_bytes import bytes32
+from flora.types.coin_record import CoinRecord
+from flora.types.coin_solution import CoinSpend
+from flora.types.spend_bundle import SpendBundle
+from flora.util.ints import uint32, uint64
 
 from .record import FarmerRecord
 
