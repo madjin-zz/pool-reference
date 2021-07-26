@@ -11,9 +11,9 @@ import os
 import yaml
 
 from blspy import AugSchemeMPL, G1Element
-from chia.consensus.block_rewards import calculate_pool_reward
-from chia.pools.pool_wallet_info import PoolState, PoolSingletonState
-from chia.protocols.pool_protocol import (
+from flora.consensus.block_rewards import calculate_pool_reward
+from flora.pools.pool_wallet_info import PoolState, PoolSingletonState
+from flora.protocols.pool_protocol import (
     PoolErrorCode,
     PostPartialRequest,
     PostPartialResponse,
@@ -23,24 +23,24 @@ from chia.protocols.pool_protocol import (
     PutFarmerResponse,
     POOL_PROTOCOL_VERSION,
 )
-from chia.rpc.wallet_rpc_client import WalletRpcClient
-from chia.types.blockchain_format.coin import Coin
-from chia.types.coin_record import CoinRecord
-from chia.types.coin_spend import CoinSpend
-from chia.util.bech32m import decode_puzzle_hash
-from chia.consensus.constants import ConsensusConstants
-from chia.util.ints import uint8, uint16, uint32, uint64
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.rpc.full_node_rpc_client import FullNodeRpcClient
-from chia.full_node.signage_point import SignagePoint
-from chia.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.consensus.pot_iterations import calculate_iterations_quality
-from chia.util.lru_cache import LRUCache
-from chia.util.chia_logging import initialize_logging
-from chia.wallet.transaction_record import TransactionRecord
-from chia.pools.pool_puzzles import (
+from flora.rpc.wallet_rpc_client import WalletRpcClient
+from flora.types.blockchain_format.coin import Coin
+from flora.types.coin_record import CoinRecord
+from flora.types.coin_solution import CoinSpend
+from flora.util.bech32m import decode_puzzle_hash
+from flora.consensus.constants import ConsensusConstants
+from flora.util.ints import uint8, uint16, uint32, uint64
+from flora.util.byte_types import hexstr_to_bytes
+from flora.util.default_root import DEFAULT_ROOT_PATH
+from flora.rpc.full_node_rpc_client import FullNodeRpcClient
+from flora.full_node.signage_point import SignagePoint
+from flora.types.end_of_slot_bundle import EndOfSubSlotBundle
+from flora.types.blockchain_format.sized_bytes import bytes32
+from flora.consensus.pot_iterations import calculate_iterations_quality
+from flora.util.lru_cache import LRUCache
+from flora.util.flora_logging import initialize_logging
+from flora.wallet.transaction_record import TransactionRecord
+from flora.pools.pool_puzzles import (
     get_most_recent_singleton_coin_from_coin_spend,
     get_delayed_puz_info_from_launcher_spend,
     launcher_id_to_p2_puzzle_hash,
