@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import Dict, Mapping
 
-from chia.protocols.pool_protocol import PoolErrorCode, ErrorResponse
-from chia.util.ints import uint16
-from chia.util.json_util import obj_to_response
+from flora.protocols.pool_protocol import PoolErrorCode, ErrorResponse
+from flora.util.ints import uint16
+from flora.util.json_util import obj_to_response
 
 
 def error_response(code: PoolErrorCode, message: str):
