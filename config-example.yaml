@@ -5,12 +5,12 @@ pool_info:
   description: (example) The Reference Pool allows you to pool with low fees, paying out daily using Chia.
 welcome_message: "Welcome to the reference pool!"
 pool_fee: 0.01
-pool_url: http://10.0.0.45
+pool_url: https://190.117.110.2
 min_difficulty: 10
 default_difficulty: 10
-default_target_address: txch1h8vdax8vtspx7yt8kz6cwu2awymlgwmdr4qts8v643kusd2lmc5qht7ltq
-pool_fee_address: txch1jhydnk47xl40jn3pgwjd708uk2wqzqexagy9xxjcwt2qeaumv3fqcrw6e2
-wallet_fingerprint: 3967641394
+default_target_address: xfl1m3msfr53hnru7xheh7x23gz03ra32fc0sju5fvleyf3tg070talqh5vhzw
+pool_fee_address: xfl1zpjkwl69at47sdhkq7r50rpqsdnlze9nrnqerfl5cn4h3fvrdprqy3up4n
+wallet_fingerprint: 787007356
 authentication_token_timeout: 5
 wallet_id: 1
 node_rpc_port: 18755
