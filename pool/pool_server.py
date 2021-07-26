@@ -7,7 +7,7 @@ from typing import Dict, Callable, Optional
 import aiohttp
 from blspy import AugSchemeMPL, G2Element
 from aiohttp import web
-from chia.protocols.pool_protocol import (
+from flora.protocols.pool_protocol import (
     PoolErrorCode,
     GetFarmerResponse,
     GetPoolInfoResponse,
