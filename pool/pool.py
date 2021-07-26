@@ -26,7 +26,7 @@ from flora.protocols.pool_protocol import (
 from flora.rpc.wallet_rpc_client import WalletRpcClient
 from flora.types.blockchain_format.coin import Coin
 from flora.types.coin_record import CoinRecord
-from flora.types.coin_solution import CoinSpend
+from flora.types.coin_solution import CoinSolution
 from flora.util.bech32m import decode_puzzle_hash
 from flora.consensus.constants import ConsensusConstants
 from flora.util.ints import uint8, uint16, uint32, uint64
@@ -535,7 +535,7 @@ class Pool:
 
             # Now we need to check to see that the singleton in the blockchain is still assigned to this pool
             singleton_state_tuple: Optional[
-                Tuple[CoinSpend, PoolState, bool]
+                Tuple[CoinSolution, PoolState, bool]
             ] = await self.get_and_validate_singleton_state(partial.payload.launcher_id)
 
             if singleton_state_tuple is None:
@@ -574,7 +574,7 @@ class Pool:
                 )
 
             singleton_state_tuple: Optional[
-                Tuple[CoinSpend, PoolState, bool]
+                Tuple[CoinSolution, PoolState, bool]
             ] = await self.get_and_validate_singleton_state(request.payload.launcher_id)
 
             if singleton_state_tuple is None:
@@ -606,7 +606,7 @@ class Pool:
             )
             assert launcher_coin is not None and launcher_coin.spent
 
-            launcher_solution: Optional[CoinSpend] = await get_coin_spend(self.node_rpc_client, launcher_coin)
+            launcher_solution: Optional[CoinSolution] = await get_coin_spend(self.node_rpc_client, launcher_coin)
             delay_time, delay_puzzle_hash = get_delayed_puz_info_from_launcher_spend(launcher_solution)
 
             if delay_time < 3600:
@@ -645,7 +645,7 @@ class Pool:
             return error_dict(PoolErrorCode.FARMER_NOT_KNOWN, f"Farmer with launcher_id {launcher_id} not known.")
 
         singleton_state_tuple: Optional[
-            Tuple[CoinSpend, PoolState, bool]
+            Tuple[CoinSolution, PoolState, bool]
         ] = await self.get_and_validate_singleton_state(launcher_id)
 
         if singleton_state_tuple is None:
@@ -701,7 +701,7 @@ class Pool:
 
     async def get_and_validate_singleton_state(
         self, launcher_id: bytes32
-    ) -> Optional[Tuple[CoinSpend, PoolState, bool]]:
+    ) -> Optional[Tuple[CoinSolution, PoolState, bool]]:
         """
         :return: the state of the singleton, if it currently exists in the blockchain, and if it is assigned to
         our pool, with the correct parameters. Otherwise, None. Note that this state must be buried (recent state
@@ -725,7 +725,7 @@ class Pool:
             self.follow_singleton_tasks[launcher_id] = singleton_task
             remove_after = True
 
-        optional_result: Optional[Tuple[CoinSpend, PoolState, PoolState]] = await singleton_task
+        optional_result: Optional[Tuple[CoinSolution, PoolState, PoolState]] = await singleton_task
         if remove_after and launcher_id in self.follow_singleton_tasks:
             await self.follow_singleton_tasks.pop(launcher_id)
 
