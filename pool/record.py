@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from blspy import G1Element
 from flora.pools.pool_wallet_info import PoolState
 from flora.types.blockchain_format.sized_bytes import bytes32
-from flora.types.coin_solution import CoinSpend
+from flora.types.coin_solution import CoinSolution
 from flora.util.ints import uint64
 from flora.util.streamable import streamable, Streamable
 
@@ -16,7 +16,7 @@ class FarmerRecord(Streamable):
     delay_time: uint64  # Backup time after which farmer can claim rewards directly, if pool unresponsive
     delay_puzzle_hash: bytes32  # Backup puzzlehash to claim rewards
     authentication_public_key: G1Element  # This is the latest public key of the farmer (signs all partials)
-    singleton_tip: CoinSpend  # Last coin spend that is buried in the blockchain, for this singleton
+    singleton_tip: CoinSolution  # Last coin spend that is buried in the blockchain, for this singleton
     singleton_tip_state: PoolState  # Current state of the singleton
     points: uint64  # Total points accumulated since last rest (or payout)
     difficulty: uint64  # Current difficulty for this farmer
